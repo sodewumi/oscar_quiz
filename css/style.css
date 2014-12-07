@@ -60,53 +60,69 @@ div.bg {
 
 .bg a {
 	padding: 5px 20px;
-	border-radius: 13%;
 	background-color: rgb(67, 67, 57);
-	/*border: .3em solid rgb(229, 255, 241);*/
 	color: rgb(220, 217, 185);
 	text-decoration: none;
 	box-shadow: 4px 4px 5px black;
 
 }
 
+.bg a:hover {
+	background-color: rgba(67, 67, 57, .5);
+}
+
 /*---------------------------------------------------
 					Counter Modal
 -------------------------------------------------------*/
 section#counter {
+	display: none;
 	text-align: center;
 }
 
 #counter h1 {
-	color: white;
+	font-size: 2.5em;
 	width: 100%;
-	height: 10%;
+	height: 5%;
 }
 
 ul#answer {
 	text-align: center;
 	list-style: none;
+	margin-bottom: 2em;
 }
 
 #answer li {
 	overflow: hidden;
 	display: inline-block;
-	border: 10px solid black;
+	border: 7px solid black;
 	height: 50px;
 	width: 40%;
 	margin: 1em;
+	background-color: rgb(195, 192, 164);
+	color: rgb(55, 55, 47);
+
 }
 
 #counter a {
-	
-	/*clear: left;*/
-	border: 10px solid black;
+	background-color: rgb(55, 53, 30);
+	font-size: 1.5em;
+	color: white;
+	text-decoration: none;
+	padding: .5em 2em;
+	color: white;
+	margin-top: 1em;
+	border: 5px solid black;
 }
 
-
-/*------------------Game Section -------------*/
+#counter a:hover {
+	background-color: rgba(55, 53, 30, .5);
+}
+/*--------------------------------------------
+				Game Section 
+----------------------------------------------*/
 /*gives picture and a black overlay*/
 section#quiz {
-	display: none;
+	/*display: none;*/
 	position: absolute;
 	height: 100%;
 	width: 100%;
