@@ -18,11 +18,10 @@ html,body {
 
 /*------------------overlay rules -------------*/
 section.modal {
+	/*display: none;*/
 	height: 100%;
 	width: 100%;
-	position: absolute;
-	/*display: table;*/
-	padding: 4% 0;
+	/*position: absolute;*/
 	z-index: 1000;
 	background-image: url('../img/beige-paper.png');
 	background-size: cover;
@@ -33,6 +32,12 @@ section.modal {
 /*--------------------------------------------------
 			Rules Modal
 ----------------------------------------------------*/
+section#rules{
+	display: none;
+	padding: 4% 0;
+
+}
+
 div.bg {
 	padding: 2% 3em;
 	background-color: rgb(195, 192, 164);
@@ -56,13 +61,46 @@ div.bg {
 .bg a {
 	padding: 5px 20px;
 	border-radius: 13%;
-	background-color: rgb(183, 174, 99);
-	color: white;
+	background-color: rgb(67, 67, 57);
+	/*border: .3em solid rgb(229, 255, 241);*/
+	color: rgb(220, 217, 185);
 	text-decoration: none;
-	box-shadow: 5px 5px 5px black;
+	box-shadow: 4px 4px 5px black;
 
 }
 
+/*---------------------------------------------------
+					Counter Modal
+-------------------------------------------------------*/
+section#counter {
+	text-align: center;
+}
+
+#counter h1 {
+	color: white;
+	width: 100%;
+	height: 10%;
+}
+
+ul#answer {
+	text-align: center;
+	list-style: none;
+}
+
+#answer li {
+	overflow: hidden;
+	display: inline-block;
+	border: 10px solid black;
+	height: 50px;
+	width: 40%;
+	margin: 1em;
+}
+
+#counter a {
+	
+	/*clear: left;*/
+	border: 10px solid black;
+}
 
 
 /*------------------Game Section -------------*/
