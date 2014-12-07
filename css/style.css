@@ -1,0 +1,114 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  	box-sizing: inherit;
+  	margin: 0px;
+	padding: 0px;
+	/*border: 1px solid red;*/
+}
+html,body {
+    height: 100%; 
+    color: white;
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+    text-align: center;
+}
+
+
+/*------------------First Modal overlay stating game rules -------------*/
+
+/*------------------Game Section -------------*/
+/*gives picture and a black overlay*/
+section#quiz {
+	height: 100%;
+	width: 100%;
+}
+div.pic {
+	height: 75%;
+	width: 100%;
+	background-image: url('../img/titanic_large.jpg');
+	/*background-repeat: no-repeat;*/
+	background-size: cover;
+	/*background-position: center;*/
+}
+
+#overlay {
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	overflow: hidden; 
+	padding: 5% 0;
+}
+
+/*styles for the question texts*/
+#formatting {
+	padding: 10% 0;
+}
+
+h1,
+h2,
+p,
+#questions a {
+	text-shadow: 4px 4px 4px black;
+}
+
+h1,
+h2 {
+	margin-top: .3em;
+}
+
+
+h1 {
+	font-size: 2em;
+	color: rgb(183, 174, 99);
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: lighter;
+	color: rgb(195, 192, 164);
+}
+
+p {
+	font-size: 2em;
+}
+
+/*question buttons*/
+div#quiz {
+	height: 25%;
+	width: 100%;
+}
+
+#questions {
+	height: 100%
+}
+
+#questions li{
+	padding: 5% 0;
+	width: 25%;
+	height: 100%;
+	display: inline;
+	float: left;
+
+}
+
+#questions a {
+	padding: 10% 0em;
+	color: white;
+	text-decoration: none;
+	font-size: 1.5em;
+}
+
+.question1 {
+	background-color: rgb(195, 192, 164);
+}
+
+.question2 {
+	background-color: rgb(183, 174, 99);
+}
+
+.question3 {
+	background-color: rgb(132, 126, 71);
+}
+.question4 {
+	background-color: rgb(55, 53, 30);
+}
