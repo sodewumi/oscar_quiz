@@ -15,11 +15,61 @@ html,body {
 }
 
 
-/*------------------First Modal overlay stating game rules -------------*/
+
+/*------------------overlay rules -------------*/
+section.modal {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	/*display: table;*/
+	padding: 4% 0;
+	z-index: 1000;
+	background-image: url('../img/beige-paper.png');
+	background-size: cover;
+	/*background-color: rgb(55, 53, 30);*/
+	overflow: hidden; 
+}
+
+/*--------------------------------------------------
+			Rules Modal
+----------------------------------------------------*/
+div.bg {
+	padding: 2% 3em;
+	background-color: rgb(195, 192, 164);
+	vertical-align: middle;
+	margin: auto;
+	position: relative;
+	width: 500px;
+	border-radius: 13%;
+}
+
+.bg h1 {
+	font-size: 3em;
+}
+
+.bg p {
+	font-size: 1.2em;
+	margin-bottom: 1em;
+	color: rgb(55,55,47);
+}
+
+.bg a {
+	padding: 5px 20px;
+	border-radius: 13%;
+	background-color: rgb(183, 174, 99);
+	color: white;
+	text-decoration: none;
+	box-shadow: 5px 5px 5px black;
+
+}
+
+
 
 /*------------------Game Section -------------*/
 /*gives picture and a black overlay*/
 section#quiz {
+	display: none;
+	position: absolute;
 	height: 100%;
 	width: 100%;
 }
@@ -46,7 +96,7 @@ div.pic {
 
 h1,
 h2,
-p,
+#formatting p,
 #questions a {
 	text-shadow: 4px 4px 4px black;
 }
