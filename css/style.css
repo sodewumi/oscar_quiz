@@ -118,6 +118,10 @@ ul#answer {
 #counter a:hover {
 	background-color: rgba(55, 53, 30, .5);
 }
+
+a#redo {
+	display: none;
+}
 /*--------------------------------------------
 				Game Section 
 ----------------------------------------------*/

@@ -4,11 +4,16 @@ $(document).ready(function () {
 	//keeps track if the game is finished
 	var done;
 	//how many you answered correctly
-	var numCorrect = 0;
+	var numCorrect;
 	//the answer the user chooses
 	var choice;
 	//for the for loop inside the correctChoice function
-	var plusOne = 0;
+	var plusOne;
+	//answer page header
+	var header;
+	//a list of all answers
+	var answersLists;
+
 
 
 	/*-----------------------------------------------
@@ -16,8 +21,8 @@ $(document).ready(function () {
 	------------------------------------------------*/
 	var movies = 
 					[{
-						question: "Titanic tied with \"Lord of the Rings: Return of the \
-							King\" and \"Ben Hur\" for the most oscar wins for a single movie. How many \
+						question: "<em>Titanic</em> is tied with <em>Lord of the Rings: Return of the \
+							King</em> and <em>Ben Hur</em> for the most oscar wins for a single movie. How many \
 							Oscars did Titanic win?",
 						sub: "77<sup>th</sup> Academy Awards",
 						heading: "Titanic",
@@ -52,7 +57,7 @@ $(document).ready(function () {
 						questions: ["Peter Finch", "James Dean", "Ralph Richardson", "Massimo Troisi"]
 					},
 					{
-						question: "The Kings Speech is the only film to win Best Picture to feature:",
+						question: "<em>The Kings Speech</em> is the only film to win Best Picture to feature:",
 						sub: "83<sup>rd</sup> Academy Awards",
 						heading: "The King\'s Speech",
 						image: "../img/king.jpg",
@@ -70,13 +75,13 @@ $(document).ready(function () {
 					},
 					{
 						question: "Halle Berry is infamous for winning a Razzie, an award for the worst in film, for her \
-								her performance in Catwoman immediately following her Oscar win. Which one of these Oscar wining Actors \
+								her performance in <em>Catwoman</em> immediately following her Oscar win. Which one of these Oscar wining Actors \
 								and Actresses have not also won a Razzie.",
 						sub: "The worst of the best",
 						heading: "Razzie winning Oscar winners",
 						image: "../img/halle.jpg",
-						correct: "Brad Pitt",
-						questions: ["Liza Minnelli", "Sandra Bullock", "Brad Pitt", "Roberti Benigni"]
+						correct: "Forest Whitaker",
+						questions: ["Liza Minnelli", "Sandra Bullock", "Forest Whitaker", "Roberti Benigni"]
 					},
 					{
 						question: "Adrian Brody became the youngest Academy Award winner for Best Actor when he won for the film \
@@ -93,7 +98,7 @@ $(document).ready(function () {
 						heading: "Longest Running ceremony",
 						image: "../img/bored.jpg",
 						correct: "Whoopi Goldberg",
-						questions: ["Whoopi Goldberg", "Billy Crystal", "Steve Martin", "Chevy Chase"]
+						questions: ["Steve Martin", "Whoopi Goldberg", "Billy Crystal", "Chevy Chase"]
 					},
 					{
 						question: "Edith Head has won eight awards- the most awards won by any woman. Which category did she win?",
@@ -106,8 +111,13 @@ $(document).ready(function () {
 
 	//starts a new game
 	var newGame = function () {
+		plusOne = 0;
 		counter = 0;
+		numCorrect = 0;
 		done = false;
+		$('#answer').children('li').empty();
+		$('#next').show();
+		$('#redo').hide();
 
 	}
 
@@ -124,7 +134,6 @@ $(document).ready(function () {
 		
 		//empties each html before clicked
 		var remove = function () {
-			if (question.text() !== null) {
 				question.empty();
 				subtitle.empty();
 				title.empty();
@@ -132,7 +141,6 @@ $(document).ready(function () {
 				questionTwo.empty();
 				questionThree.empty();
 				questionFour.empty();
-			}
 		}
 		remove();
 
@@ -157,24 +165,18 @@ $(document).ready(function () {
 	Judges if the choice selected is correct
 -----------------------------*/
 	var correctChoice = function () {
-		var header = $('#counter').children('h1');
-		//returns all the answers
-		var answerList = [];
-		var answersLists;
-
-		//removes header
-		if (header.text() !== null) {
-			header.empty();
-		}
+		header = $('#counter').children('h1');
+		//removes header when user clicks next
+		header.empty();
 
 		//counter is already at one by the time this function starts
 		//so you need to subtract counter by one
 		if (choice === movies[counter -1].correct) {
-			header.append('Question '+counter+ ': Correct');
+			header.text('Question '+counter+ ': Correct');
 
 			numCorrect++
 		} else {
-			header.append('Question '+counter+ ': Wrong');
+			header.text('Question '+counter+ ': Wrong');
 		}
 
 		//shows user the correct answer
@@ -182,30 +184,71 @@ $(document).ready(function () {
 			answersLists += $('#answer'+ i).append(counter +": "+movies[i].correct);
 		}
 
+		//checks to see if the game is over
+		if (counter === movies.length) {
+			done = true;
+		}
+
 		plusOne++;
 
-	}
+	};
+
+	var finished = function() {
+		//change the header
+		header.empty();
+		header.text('Game Over. You answered ' +numCorrect+ '\\' +movies.length+ ' correctly.');
+		header.css({'font-size': '2em'});
+
+		//new game button
+		$('#next').hide();
+		$('#redo').show();
+
+	};
 	
 
 	newGame();
 
-	$('#start').click(function () {
+	//first game starts
+	$('#start').click(function (e) {
+		e.preventDefault();
 		$('#rules').hide();
 		$("#quiz").show();
-		movieQuiz();
+
+		if(done) {
+			newGame();
+			movieQuiz();
+		} else {
+			movieQuiz();
+		}
 	});
 
-	$('.a').on('click', function() {
+	//when a user clicks on a question
+	$('.a').click(function (e) {
 		$('#quiz').hide();
 		$("#counter").show();
+		// $('#counter').slideUp();
 		choice = $(this).text();
 		correctChoice();
+
+		//complete game 
+		if(done) {
+			finished();
+		}
 	});
 
-	$('#next').on('click', function() {
+	//when the user clicks next button
+	$('#next').click(function (e) {
+		e.preventDefault();
 		$('#counter').hide();
 		$('#quiz').show();
 		movieQuiz();
-	})
+	});
+
+	//when user clicks play again button
+	$('#redo').click(function (e) {
+		e.preventDefault();
+		$('#counter').hide();
+		$('#rules').show();
+	});
 
 });
