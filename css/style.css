@@ -14,18 +14,20 @@ html,body {
     text-align: center;
 }
 
+section {
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+}
 
 
 /*------------------overlay rules -------------*/
 section.modal {
-	/*display: none;*/
 	height: 100%;
 	width: 100%;
-	/*position: absolute;*/
 	z-index: 1000;
 	background-image: url('../img/beige-paper.png');
 	background-size: cover;
-	/*background-color: rgb(55, 53, 30);*/
 	overflow: hidden; 
 }
 
@@ -33,7 +35,6 @@ section.modal {
 			Rules Modal
 ----------------------------------------------------*/
 section#rules{
-	display: none;
 	padding: 4% 0;
 
 }
@@ -122,8 +123,7 @@ ul#answer {
 ----------------------------------------------*/
 /*gives picture and a black overlay*/
 section#quiz {
-	/*display: none;*/
-	position: absolute;
+	display: none;
 	height: 100%;
 	width: 100%;
 }
@@ -173,6 +173,8 @@ h2 {
 }
 
 p {
+	padding-left: 1em;
+	padding-right: 1em;
 	font-size: 2em;
 }
 
