@@ -3,6 +3,13 @@ $(document).ready(function () {
 	var counter;
 	//keeps track if the game is finished
 	var done;
+	//how many you answered correctly
+	var numCorrect = 0;
+	//the answer the user chooses
+	var choice;
+	//for the for loop inside the correctChoice function
+	var plusOne = 0;
+
 
 	/*-----------------------------------------------
 			create an array of movie objects
@@ -15,7 +22,7 @@ $(document).ready(function () {
 						sub: "77<sup>th</sup> Academy Awards",
 						heading: "Titanic",
 						image: "../img/titanic_large.jpg",
-						right: 2,
+						correct: "Eleven Academy Awards",
 						questions: ["Ten Academy Awards", "Nine Academy Awards", "Eleven Academy Awards", "Twelve Academy Awards"]
 					},
 					{
@@ -23,7 +30,8 @@ $(document).ready(function () {
 						sub: "14<sup>th</sup> Academy Awards",
 						heading: "Citizen Kane",
 						image: "../img/citizen_kane.jpg",
-						questions: ["Ten Academy Awards", "Nine Academy Awards", "Eleven Academy Awards", "Twelve Academy Awards"]
+						correct: "Best Orginal Screenplay",
+						questions: ["Best Orginal Screenplay", "Best Picture", "Best Director", "Best Film Editing"]
 					},
 					{
 						question: "Which one of these films are not \"Big Five\" Academy Award winners. The Big Five Cartegories are \
@@ -31,7 +39,8 @@ $(document).ready(function () {
 									orginal Screenplay)",
 						sub: "Only three films have won the Big Five",
 						heading: "The Big Five",
-						image: "../img/general.jpg",
+						image: "../img/general1.jpg",
+						correct: "American Beauty",
 						questions: ["It Happened One Night", "American Beauty", "One Flew Over the Cuckoo\'s Nest", "The Silence of the Lambs"]
 					}, 
 					{
@@ -39,6 +48,7 @@ $(document).ready(function () {
 						sub: "Seven actors were nominated posthumously",
 						heading: "Posthumous Academy Award",
 						image: "../img/heath.jpeg",
+						correct: "Peter Finch",
 						questions: ["Peter Finch", "James Dean", "Ralph Richardson", "Massimo Troisi"]
 					},
 					{
@@ -46,6 +56,7 @@ $(document).ready(function () {
 						sub: "83<sup>rd</sup> Academy Awards",
 						heading: "The King\'s Speech",
 						image: "../img/king.jpg",
+						correct: "Dogs",
 						questions: ["Dogs", "Cats", "Bananas", "Apples"]
 					},
 					{
@@ -54,6 +65,7 @@ $(document).ready(function () {
 						sub: "59<sup>th</sup> Academy Awards",
 						heading: "Paul Newman",
 						image: "../img/paul.jpg",
+						correct: "The Color of Money",
 						questions: ["Moneyball", "Wag the Dog", "Adaptation", "The Color of Money"]
 					},
 					{
@@ -63,6 +75,7 @@ $(document).ready(function () {
 						sub: "The worst of the best",
 						heading: "Razzie winning Oscar winners",
 						image: "../img/halle.jpg",
+						correct: "Brad Pitt",
 						questions: ["Liza Minnelli", "Sandra Bullock", "Brad Pitt", "Roberti Benigni"]
 					},
 					{
@@ -71,6 +84,7 @@ $(document).ready(function () {
 						sub: "75<sup>th</sup> Academy Awards",
 						heading: "The Pianist",
 						image: "../img/brody.jpg",
+						correct: "Twenty-Nine",
 						questions: ["Thirty", "Twenty-Five", "Twenty-Seven", "Twenty-Nine"]
 					},
 					{
@@ -78,6 +92,7 @@ $(document).ready(function () {
 						sub: "This person hosted the Academy Awards four times",
 						heading: "Longest Running ceremony",
 						image: "../img/bored.jpg",
+						correct: "Whoopi Goldberg",
 						questions: ["Whoopi Goldberg", "Billy Crystal", "Steve Martin", "Chevy Chase"]
 					},
 					{
@@ -85,7 +100,8 @@ $(document).ready(function () {
 						sub: "All eight awards came from the same category.",
 						heading: "Longest Running ceremony",
 						image: "../img/edith.jpg",
-						questions: ["Best Cinematography", "Best Film Editing", "Best Costume Design", "Best Adapted Screenplay"]
+						correct: "Best Costume Design",
+						questions: ["Best Original Song", "Best Film Editing", "Best Costume Design", "Best Adapted Screenplay"]
 					}]	
 
 	//starts a new game
@@ -106,8 +122,9 @@ $(document).ready(function () {
 		var questionThree = $('.question3').children('a');
 		var questionFour = $('.question4').children('a');
 		
+		//empties each html before clicked
 		var remove = function () {
-			if (question.val() !== null) {
+			if (question.text() !== null) {
 				question.empty();
 				subtitle.empty();
 				title.empty();
@@ -117,20 +134,58 @@ $(document).ready(function () {
 				questionFour.empty();
 			}
 		}
-
 		remove();
+
+		//question
 		question.append(movies[counter].question);
 		subtitle.append(movies[counter].sub);
 		title.append(movies[counter].heading);
 
- 		//var newQuestion
+ 		//answers
 		questionOne.append(movies[counter].questions[0]);
 		questionTwo.append(movies[counter].questions[1]);
 		questionThree.append(movies[counter].questions[2]);
 		questionFour.append(movies[counter].questions[3]);
 
+		$('.pic').css({"background-image": "url(" +movies[counter].image+")"})
+
+
 		counter++;
 	}
+
+/*-------------------------------------
+	Judges if the choice selected is correct
+-----------------------------*/
+	var correctChoice = function () {
+		var header = $('#counter').children('h1');
+		//returns all the answers
+		var answerList = [];
+		var answersLists;
+
+		//removes header
+		if (header.text() !== null) {
+			header.empty();
+		}
+
+		//counter is already at one by the time this function starts
+		//so you need to subtract counter by one
+		if (choice === movies[counter -1].correct) {
+			header.append('Question '+counter+ ': Correct');
+
+			numCorrect++
+		} else {
+			header.append('Question '+counter+ ': Wrong');
+		}
+
+		//shows user the correct answer
+		for (var i = plusOne; i < (counter); i++) {
+			answersLists += $('#answer'+ i).append(counter +": "+movies[i].correct);
+		}
+
+		plusOne++;
+
+	}
+	
 
 	newGame();
 
@@ -143,6 +198,8 @@ $(document).ready(function () {
 	$('.a').on('click', function() {
 		$('#quiz').hide();
 		$("#counter").show();
+		choice = $(this).text();
+		correctChoice();
 	});
 
 	$('#next').on('click', function() {
