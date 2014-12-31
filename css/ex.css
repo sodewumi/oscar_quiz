@@ -7,7 +7,6 @@ html {
 	padding: 0px;
 	/*border: 1px solid red;*/
 }
-
 html,body {
     height: 100%; 
     color: white;
@@ -16,29 +15,28 @@ html,body {
 }
 
 section {
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+}
+
+
+/*------------------overlay rules -------------*/
+section.modal {
 	height: 100%;
 	width: 100%;
-}
-
-#counter,
-#game {
-	display: none;
-}
-
-#rules, 
-#counter {
-
-  	background-image: url('../img/beige-paper.png');
+	z-index: 1000;
+	background-image: url('../img/beige-paper.png');
 	background-size: cover;
 	overflow: hidden; 
 }
 
-
-/*-----------------------------------------------------------------
-	Rules Section
---------------------------------------------------------------------*/
+/*--------------------------------------------------
+			Rules Modal
+----------------------------------------------------*/
 section#rules{
 	padding: 4% 0;
+
 }
 
 div.bg {
@@ -61,7 +59,6 @@ div.bg {
 	color: rgb(55,55,47);
 }
 
-/*start button*/
 .bg a {
 	padding: 5px 20px;
 	background-color: rgb(67, 67, 57);
@@ -75,11 +72,14 @@ div.bg {
 	background-color: rgba(67, 67, 57, .5);
 }
 
+/*---------------------------------------------------
+					Counter Modal
+-------------------------------------------------------*/
+section#counter {
+	display: none;
+	text-align: center;
+}
 
-
-/*-----------------------------------------------------------------
-	Counter Section
---------------------------------------------------------------------*/
 #counter h1 {
 	font-size: 2.5em;
 	width: 100%;
@@ -87,6 +87,7 @@ div.bg {
 }
 
 ul#answer {
+	text-align: center;
 	list-style: none;
 	margin-bottom: 2em;
 }
@@ -100,6 +101,7 @@ ul#answer {
 	margin: 1em;
 	background-color: rgb(195, 192, 164);
 	color: rgb(55, 55, 47);
+
 }
 
 #counter a {
@@ -116,21 +118,24 @@ ul#answer {
 #counter a:hover {
 	background-color: rgba(55, 53, 30, .5);
 }
-
-a#redo {
+/*--------------------------------------------
+				Game Section 
+----------------------------------------------*/
+/*gives picture and a black overlay*/
+section#quiz {
 	display: none;
+	height: 100%;
+	width: 100%;
 }
-
-/*-----------------------------------------------------------------
-	Game Section
---------------------------------------------------------------------*/
 div.pic {
 	height: 75%;
 	width: 100%;
+	background-image: url('../img/titanic_large.jpg');
+	/*background-repeat: no-repeat;*/
 	background-size: cover;
+	/*background-position: center;*/
 }
 
-/*gives picture a black overlay*/
 #overlay {
 	height: 100%;
 	background-color: rgba(0, 0, 0, .5);
@@ -168,8 +173,6 @@ h2 {
 }
 
 p {
-	padding-left: 1em;
-	padding-right: 1em;
 	font-size: 2em;
 }
 
@@ -189,7 +192,6 @@ div#quiz {
 	height: 100%;
 	display: inline;
 	float: left;
-	cursor: pointer;
 
 }
 

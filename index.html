@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Movie Quiz</title>
@@ -7,73 +8,72 @@
 	<link rel="stylesheet" href="css/normalize.css">
 	<link rel="stylesheet" href="css/style.css">
 	<!-- javascript -->
-	 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 </head>
+
 <body>
-	<!-- modal overlay of the game rules -->
-	<section class="modal" id="rules">
+	<!-- rules section -->
+	<section id="rules">
 		<div class="bg">
 			<h1>Oscar Quiz</h1>
 			<p>
 				Hello!<br>
-				Every year, the Academy of Motion Picture of Arts and Sciences picks what they believe to best films, actors, writers, directors, and technical staff. Sometimes, they choose correctly, and great films like <em>The Silence of the Lambs</em> are honored. Othertimes... well, <em>Crash</em> did win Best Picture in 2005. 
+				Every year, the Academy Motion Picture of Arts and Sciences picks what they believe to be the best films, actors, writers, directors, and technical staff each year. Sometimes, they choose correctly, and great films like <em>The Silence of the Lambs</em> are honored. Othertimes... well, <em>Crash</em> did win Best Picture in 2005. 
 			</p>
 
 			<p>
 				How much do you know about the Oscars? This quiz features 10 Academy Awards trivia questions. Each question has 4 choices. Simply click the choice you think is correct.<br>
 			</p>	
 			<p>
-				<a href="#quiz" id="start">Start!</a>
+				<a href="#" id="start">Start!</a>
 			</p>
-
 		</div>
 		
 	</section>
-	<!-- quiz app section -->
-	<section id="quiz">
+
+	<!-- game section -->
+	<section id="game">
 		<div class="pic">
 		<div id="overlay">
 			<div id="formatting">
-			<p></p>	
-			<h2></h2>
-			<h1></h1>
-				
+				<p></p>	
+				<h2></h2>
+				<h1></h1>		
 			</div>
-			
-			
 		</div>
 		</div>
 
 		<div id="quiz">
 			<ul id="questions">
-				<li class="question1 a"><a href="#rules"></a></li>
-				<li class="question2 a"><a href="#rules"></a></li>
-				<li class="question3 a"><a href="#rules"></a></li>
-				<li class="question4 a"><a href="#rules"></a></li>
+				<li class="question1 a"><a href="#"></a></li>
+				<li class="question2 a"><a href="#"></a></li>
+				<li class="question3 a"><a href="#"></a></li>
+				<li class="question4 a"><a href="#"></a></li>
 			</ul>
 		</div>
 	</section>
 
-	<!-- modal box counter and next/ previous -->
-	<section class="modal" id="counter">	
+	<!-- counter section -->
+	<section id="counter">	
 		<h1></h1>
 
-			<ul id="answer">
-				<li id="answer0"></li>
-				<li id="answer1"></li>
-				<li id="answer2"></li>
-				<li id="answer3"></li>
-				<li id="answer4"></li>
-				<li id="answer5"></li>
-				<li id="answer6"></li>
-				<li id="answer7"></li>
-				<li id="answer8"></li>
-				<li id="answer9"></li>
-			</ul>	
+		<ul id="answer">
+			<li id="answer0"></li>
+			<li id="answer1"></li>
+			<li id="answer2"></li>
+			<li id="answer3"></li>
+			<li id="answer4"></li>
+			<li id="answer5"></li>
+			<li id="answer6"></li>
+			<li id="answer7"></li>
+			<li id="answer8"></li>
+			<li id="answer9"></li>
+		</ul>	
 
-		<a href="#quiz" id="next">Next</a>
-		<a href="#quiz" id="redo">Play Again</a>
+		<a href="#" id="next">Next</a>
+		<a href="#" id="redo">Play Again</a>
 	</section>
+
 </body>
 </html>
